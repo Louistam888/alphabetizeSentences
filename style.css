@@ -77,3 +77,12 @@ li {
   margin-left: 10px;
 }
 
+@media (max-width: 442px) {
+  .sort {
+    width: 80px;
+  }
+
+  .link {
+    font-size: 1rem;
+  }
+}
