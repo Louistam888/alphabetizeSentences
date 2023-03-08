@@ -89,7 +89,6 @@ const createArray = async () => {
       const rawArray = assembleQuotes(rawText);
       arrayOfSentences = sortSentences(rawArray).reverse();
     };
-
   return arrayOfSentences;
 };
 

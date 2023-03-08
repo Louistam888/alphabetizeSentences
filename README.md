@@ -24,7 +24,16 @@ By default, each sentence is displayed in an unsorted, numbered list, in the sam
 *************************
 INSTALLATION AND USE 
 
-A user simply needs to double click on the index.html file to begin using the application. No additional software dependencies are needed and the files should open in any mainstream internet browser window. The immediate landing page displays sentences in an unsorted order. Buttons in the header section allow the user to navigate back and forth between separate pages where the sentences are rendered in A-Z and Z-A order. 
+To bypass CORS errors that may arise from opening this file locally, this project makes use of a Node.js local server. 
+
+To run this application, ensure Node.js is installed. 
+
+1. Open a new terminal and install http-server with the command "npm install -g http-server" without brackets
+2. Start the local server by entering "http-server"
+3. Afte the server up and running, open your internet browser and head to http://localhost:8080/index.html
+
+
+The immediate landing page displays sentences in an unsorted order. Buttons in the header section allow the user to navigate back and forth between separate pages where the sentences are rendered in A-Z and Z-A order. 
 
 
 *************************
