@@ -16,10 +16,10 @@ const createArray = async () => {
     const stringCleanUp = sentenceRaw.forEach((string) => {
       
       let cleanedString = string
-      .replace(/^[^A-Za-z0-9"]/, "")
+      .replace(/^[^A-Za-z0-9"(\[]/, '')
       .replaceAll('""',"");
       
-      const splitString  = [...cleanedString]
+      const splitString  = [...cleanedString];
       
       let t = 0;
       for (let i=0; i<splitString.length; i++) {
@@ -38,10 +38,8 @@ const createArray = async () => {
     return cleanedSentenceArray;
   };
 
-  //FUNCTION TO CONCATENATE TWO STRINGS IF ONE ENDS IN ?" OR !", AND THE FIRST INDEX OF THE NEXT STRING IS LOWERCASE
-  
+  //FUNCTION TO CONCATENATE QUOTESS IF ONE STRING ENDS IN ?" OR !", AND THE FIRST INDEX OF THE NEXT STRING IS LOWERCASE
   const concatQuotes = (array) => {
-    
     
     for (i=0; i<array.length; i++) {
     
@@ -65,7 +63,6 @@ const createArray = async () => {
   };
 
   //FUNCTION TO ASSEMBLE ARRAY OF SENTENCES 
-
   const assembleQuotes = (bigString) => {
     const arrayToSplit = createSentenceArray(bigString);
     const arrayWithJoinedQuotes = concatQuotes(arrayToSplit);
@@ -73,7 +70,6 @@ const createArray = async () => {
   }
 
   // ROUTER FOR ARRAY CREATION FOR EACH PAGE 
-
   let arrayOfSentences;
   
     if (window.location.pathname === "/index.html") {
@@ -89,7 +85,7 @@ const createArray = async () => {
         });
         return sorted;
       };
-      const rawArray = createSentenceArray(rawText);
+      const rawArray = assembleQuotes(rawText);
       arrayOfSentences = sortSentences(rawArray);
     };
 
