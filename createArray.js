@@ -38,7 +38,7 @@ const createArray = async () => {
     return cleanedSentenceArray;
   };
 
-  //FUNCTION TO CONCATENATE QUOTESS IF ONE STRING ENDS IN ?" OR !", AND THE FIRST INDEX OF THE NEXT STRING IS LOWERCASE
+  //FUNCTION TO CONCATENATE QUOTESS IF ONE STRING ENDS IN ?" OR !", AND THE FIRST LETTER OF THE NEXT STRING IS LOWERCASE
   const concatQuotes = (array) => {
     
     for (i=0; i<array.length; i++) {
@@ -47,14 +47,14 @@ const createArray = async () => {
         return /[?!]["']$/.test(str);
       }; 
 
-      const checkIsNextStringCap = (str) => {
+      const checkIsNextStringLowCase = (str) => {
         return /^[a-z]/.test(str);
       };
 
       const currentSentence = array[i];
       const nextSentence = array[i+1];
 
-      if (checkQuoteEndPunctuation(currentSentence) === true && checkIsNextStringCap(nextSentence) === true) {
+      if (checkQuoteEndPunctuation(currentSentence) === true && checkIsNextStringLowCase(nextSentence) === true) {
         const newSentence = currentSentence + nextSentence;
         array.splice(i, 2, `${newSentence}`);
       };
@@ -69,8 +69,7 @@ const createArray = async () => {
     return arrayWithJoinedQuotes;
   }
 
-  //FUNCTION TO ALPHABETIZE SENTENCES 
-    
+  //FUNCTION TO ALPHABETIZE SENTENCES     
   const sortSentences = (array) => {
     const sorted = array.sort(function (a, b) {
       return a.localeCompare(b, undefined, { ignorePunctuation: true });
@@ -83,14 +82,13 @@ const createArray = async () => {
   
     if (window.location.pathname === "/index.html") {
       arrayOfSentences = assembleQuotes(rawText);
-      
     } else if (window.location.pathname === "/sortedAZ.html") {
       const rawArray = assembleQuotes(rawText);
       arrayOfSentences = sortSentences(rawArray);
     } else if (window.location.pathname === "/sortedZA.html") {
       const rawArray = assembleQuotes(rawText);
       arrayOfSentences = sortSentences(rawArray).reverse();
-    }
+    };
 
   return arrayOfSentences;
 };
