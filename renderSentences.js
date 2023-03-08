@@ -9,8 +9,6 @@ const renderSentences = async () => {
     newLi.innerHTML = `${sentence}`;
     document.querySelector(".sentence").append(newLi);
   });
-
 };
-
 renderSentences();
   

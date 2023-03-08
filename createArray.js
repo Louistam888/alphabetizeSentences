@@ -69,25 +69,28 @@ const createArray = async () => {
     return arrayWithJoinedQuotes;
   }
 
+  //FUNCTION TO ALPHABETIZE SENTENCES 
+    
+  const sortSentences = (array) => {
+    const sorted = array.sort(function (a, b) {
+      return a.localeCompare(b, undefined, { ignorePunctuation: true });
+    });
+    return sorted;
+  };
+
   // ROUTER FOR ARRAY CREATION FOR EACH PAGE 
   let arrayOfSentences;
   
     if (window.location.pathname === "/index.html") {
       arrayOfSentences = assembleQuotes(rawText);
       
-    } else if (window.location.pathname === "/sorted.html") {
-      
-      //FUNCTION TO ALPHABETIZE SENTENCES 
-      
-      const sortSentences = (array) => {
-        const sorted = array.sort(function (a, b) {
-          return a.localeCompare(b, undefined, { ignorePunctuation: true });
-        });
-        return sorted;
-      };
+    } else if (window.location.pathname === "/sortedAZ.html") {
       const rawArray = assembleQuotes(rawText);
       arrayOfSentences = sortSentences(rawArray);
-    };
+    } else if (window.location.pathname === "/sortedZA.html") {
+      const rawArray = assembleQuotes(rawText);
+      arrayOfSentences = sortSentences(rawArray).reverse();
+    }
 
   return arrayOfSentences;
 };
